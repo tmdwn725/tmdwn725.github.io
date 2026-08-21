@@ -4,10 +4,10 @@ timezone: Asia/Seoul
 
 title: Seungju Moon
 
-tagline: On-prem inference, agent runtimes, tool protocols
+tagline: GPU 한 대로 에이전트를 굴리는 기록
 
 description: >-
-  AI 플랫폼 엔지니어링 기록
+  온프렘 LLM 인프라와 에이전트 런타임 기록
 
 url: "https://tmdwn725.github.io"
 
