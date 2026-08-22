@@ -12,25 +12,50 @@ Chirpy 기반 개인 기술 블로그. 새 글을 쓰거나 기존 글을 고칠
 
 ## 카테고리 (정확히 2단계, 아래 목록에서만 고른다)
 
+이 트리는 "나는 AI Platform Engineer 다"라는 주장의 목차다.
+About 의 "다루는 영역" 과 짝을 이룬다. 한쪽만 바꾸지 않는다.
+
 | 1단계 | 2단계 | 무엇 |
 |---|---|---|
 | Agent Platform | Runtime | 도구 호출 루프, 세션·메모리, human-in-the-loop |
 | Agent Platform | Gateway | 프로바이더 추상화, 키·예산·사용량 집계 |
 | Agent Platform | Integration | MCP, 외부 커넥터 OAuth, SDK, 도구 등록 규약 |
-| Agent Platform | Safety | 민감정보 필터링, 도구 권한, 외부 접근 제어, 승인 게이트 |
-| Infrastructure | On-Prem LLM | vLLM, GPU, 모델 서빙, 대역폭·메모리 |
+| Agent Platform | Guardrails | 민감정보 필터링, 도구 권한, 외부 접근 제어, 승인 게이트 |
+| Infrastructure | Inference | vLLM, GPU, 모델 서빙, 대역폭·메모리 |
 | Infrastructure | Deployment | 컨테이너, CI/CD, 리버스 프록시, 운영 |
-| Engineering | Design | 스키마·API 설계 결정과 그 근거 |
+| Infrastructure | Security | 침해 대응, 접근 통제, 인증 인프라 |
+| Infrastructure | Performance | 부하 테스트, 프로파일링, 병목 추적 |
+| Engineering | Backend | Java·Spring, DB, API. AI 이전부터 쌓인 층 |
+| Engineering | Architecture | 스키마·API 설계 결정과 그 근거 |
 | Engineering | Retrospective | 회고, 판단 착오, 되돌아본 선택 |
-| Bioinformatics | Pipeline | 구조 예측·서열 설계 파이프라인 |
-| Bioinformatics | Tools | 개별 도구 조사·비교 |
+| Notes | Book | 책을 읽고 내가 바꾼 것 |
+| Notes | Talk | 강연·영상을 보고 내가 바꾼 것 |
+| Notes | Paper | 논문을 읽고 내가 바꾼 것 |
+
+세 부모의 역할:
+
+```
+Agent Platform   모델 위에 얹히는 층       가장 두꺼워야 한다
+Infrastructure   모델 아래 기계와 운영
+Engineering      그 밖의 엔지니어링 craft  가장 약한 부모. 자식 추가를 경계한다
+```
 
 - **1단계는 절대 새로 만들지 않는다.** 4개가 전부다.
 - 2단계를 추가해야 하면 **이 표를 먼저 고치고** 글을 쓴다. 표에 없는 값을 쓰지 않는다.
+- **`Notes` 는 요약글 창구가 아니다.** Notes 글은 마지막에 **"그래서 내가 바꾼 것"**
+  섹션이 반드시 있어야 한다. 없으면 발행하지 않는다. 개념 설명이 필요하면
+  **내 환경의 실측값으로 설명한다.** 남의 예시를 옮기지 않는다.
 - 한 글은 카테고리 하나만 가진다. 두 곳에 걸치면 주제가 안 좁혀진 것이다.
+- `Agent Platform / Guardrails` 는 AI 동작 제한, `Infrastructure / Security` 는
+  서버·인증 침해 대응이다. 헷갈리면 "모델이 하는 일을 막는가, 사람이 뚫는 걸 막는가" 로 나눈다.
+- `Bioinformatics`, `Design` 은 **의도적으로 뺐다.** 해당 주제 글을 실제로 쓰게 되면
+  그때 1단계로 추가한다. 미리 만들지 않는다.
+- 만든 프로젝트를 전부 쓰지 않는다. crawl-data, open-data, lang-study 처럼
+  **목표와 연결되지 않는 것은 쓰지 않는다.** 글이 늘어날수록 "여러 개 만들어본 사람" 으로
+  읽히고, 그건 원하는 인상의 반대다.
 
 ```yaml
-categories: [Infrastructure, On-Prem LLM]
+categories: [Infrastructure, Inference]
 ```
 
 ## 태그 (소문자 kebab-case, 3~5개)

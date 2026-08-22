@@ -2,7 +2,7 @@
 title: 개인 비서를 만들려다 GPU 박스를 샀다
 description: 개인 데이터를 다루는 에이전트를 만들려면 모델이 내 쪽에 있어야 했다. DGX Spark를 고른 이유와, Mac을 접은 이유.
 date: 2026-08-21 20:00:00 +0900
-categories: [Infrastructure, On-Prem LLM]
+categories: [Infrastructure, Inference]
 tags: [dgx-spark, gb10, local-llm, on-prem]
 ---
 
