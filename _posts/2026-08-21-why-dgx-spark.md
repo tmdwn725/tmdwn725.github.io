@@ -1,12 +1,12 @@
 ---
-title: 온프렘 LLM 하드웨어로 DGX Spark를 고른 이유
+title: 로컬 LLM 하드웨어로 DGX Spark를 고른 이유
 description: 개인 데이터를 다루는 에이전트를 만들려면 모델이 내 쪽에 있어야 했다. RTX 4090, Mac mini, Mac Studio를 놓고 비교한 끝에 CUDA가 결정적이었다.
 date: 2026-08-21 20:00:00 +0900
 categories: [Infrastructure, Inference]
 tags: [dgx-spark, gb10, local-llm, on-prem]
 ---
 
-> DGX Spark로 온프렘 LLM을 굴린 기록. 1편.
+> DGX Spark로 LLM을 직접 굴린 기록. 1편.
 
 ## 만들고 싶었던 것
 

@@ -6,7 +6,7 @@ categories: [Infrastructure, Inference]
 tags: [vllm, kv-cache, gpu, moe]
 ---
 
-> DGX Spark로 온프렘 LLM을 굴린 기록. 2편.
+> DGX Spark로 LLM을 직접 굴린 기록. 2편.
 
 ## 활성 3B가 76GB를 쓴다
 

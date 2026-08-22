@@ -19,7 +19,8 @@ title: Seungju Moon # the main title
 tagline: Building LLM agent platforms # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  온프렘 LLM 인프라와 에이전트 런타임 기록
+  에이전트 런타임과 게이트웨이를 만들면서 막혔던 것들의 기록.
+  LLM 추론 인프라, MCP, 서버 운영.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
