@@ -1,0 +1,400 @@
+---
+---
+
+@use "main";
+
+/* ═══════════════════════════════════════════════════════
+   1. 한글 폰트
+   Chirpy 기본값은 영문 기준이라 한글이 시스템 폰트로 폴백되면서
+   얇고 흐리게 보인다. Pretendard로 통일한다.
+   ═══════════════════════════════════════════════════════ */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css");
+
+:root {
+  --bs-body-font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--bs-body-font-family);
+  font-weight: 400;
+  letter-spacing: -0.003em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   2. 색
+   Chirpy 7.6 은 모드 전환에 [data-bs-theme] 을 쓴다.
+   테마 셀렉터가 :root 기반(0,2,0)이라 html 기반으로 쓰면 우선순위에서 진다.
+   같은 셀렉터 3가지를 그대로 맞춰서 뒤에 선언한다.
+   ═══════════════════════════════════════════════════════ */
+@mixin light-palette {
+  --body-bg: #ffffff;
+  --main-bg: #ffffff;
+  --sidebar-bg: #f7f8f9;
+  --text-color: #33383d;
+  --text-muted-color: #6a7178;
+  --heading-color: #16191c;
+  --link-color: #0b6e6f;
+  --link-underline-color: #a9d5d5;
+  --blockquote-border-color: #d4dade;
+  --card-bg: #ffffff;
+  --card-border-color: #e4e7ea;
+  --main-border-color: #e8ebee;
+  --toc-highlight: #0b6e6f;
+  --tag-bg: #f0f2f4;
+  --tag-hover: #e4e7ea;
+  --topbar-bg: #ffffff;
+  --topbar-text-color: #6a7178;
+  --site-title-color: #16191c;
+  --site-subtitle-color: #6a7178;
+  --sidebar-muted-color: #6a7178;
+  --blockquote-text-color: #6a7178;
+}
+
+@mixin dark-palette {
+  /* 순검정에 가까우면 답답하다. 청회색 계열로 살짝 띄운다. */
+  --body-bg: #1e2226;
+  --main-bg: #1e2226;
+  --sidebar-bg: #191c20;
+  --text-color: #cfd4d9;
+  --text-muted-color: #8b939b;
+  --heading-color: #eef1f4;
+  --link-color: #56bfba;
+  --link-underline-color: #2f5f5e;
+  --blockquote-border-color: #3a4149;
+  --card-bg: #242930;
+  --card-border-color: #333941;
+  --main-border-color: #2f353c;
+  --btn-border-color: #333941;
+  --toc-highlight: #56bfba;
+  --tag-bg: #2a2f36;
+  --tag-hover: #343b43;
+  --topbar-bg: #1e2226;
+  --topbar-text-color: #8b939b;
+  --site-title-color: #e8ecf0;
+  --site-subtitle-color: #8b939b;
+  --sidebar-muted-color: #8b939b;
+  --blockquote-text-color: #8b939b;
+}
+
+:root[data-bs-theme='light'] {
+  @include light-palette;
+}
+
+:root[data-bs-theme='dark'] {
+  @include dark-palette;
+}
+
+:root:not([data-bs-theme]) {
+  @media (prefers-color-scheme: light) {
+    @include light-palette;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-palette;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   3. 본문 — 글 읽는 화면이 핵심이다
+   ═══════════════════════════════════════════════════════ */
+.content {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  word-break: keep-all;      /* 한글 단어가 중간에서 안 끊기게 */
+  overflow-wrap: break-word;
+}
+
+.content p {
+  margin-bottom: 1.3rem;
+}
+
+/* 본문 폭은 Chirpy 그리드에 맡긴다. container를 건드리면 우측 패널과 겹친다. */
+
+/* 제목 — 한글은 조금 더 굵어야 읽힌다 */
+h1, h2, h3, h4, h5,
+.post-title,
+#post-list .card-title,
+#sidebar .site-title a,
+#archives .year,
+.categories .card-header {
+  font-family: var(--bs-body-font-family);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+}
+
+.post-title {
+  font-size: 1.9rem;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.content h2 {
+  margin-top: 3rem;
+  margin-bottom: 0.9rem;
+  font-size: 1.42rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.content h3 {
+  margin-top: 2.2rem;
+  margin-bottom: 0.6rem;
+  font-size: 1.16rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   4. 글 목록 — 카드 테두리를 줄이고 여백으로 구분
+   ═══════════════════════════════════════════════════════ */
+#post-list .card-title {
+  font-size: 1.24rem;
+  line-height: 1.45;
+  margin-bottom: 0.5rem;
+}
+
+#post-list .card-text {
+  line-height: 1.7;
+  word-break: keep-all;
+  font-size: 0.95rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   5. 사이드바
+   ═══════════════════════════════════════════════════════ */
+#sidebar .site-title a {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+#sidebar .site-subtitle {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  word-break: keep-all;
+  margin-top: 0.3rem;
+}
+
+#sidebar .nav-link {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ═══════════════════════════════════════════════════════
+   6. 코드 — 본문과 톤을 맞춘다
+   ═══════════════════════════════════════════════════════ */
+code, pre, .highlight, .highlighter-rouge {
+  font-family: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing: 0;
+  word-break: normal;
+}
+
+.content code:not(pre code) {
+  font-size: 0.87em;
+  padding: 0.15em 0.4em;
+}
+
+div.highlighter-rouge,
+figure.highlight {
+  border-radius: 6px;
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════════════════
+   7. 표 · 인용문
+   ═══════════════════════════════════════════════════════ */
+/* 폭은 Chirpy의 .table-wrapper(overflow-x)에 맡긴다.
+   width를 100%로 강제하면 좁은 화면에서 셀이 뭉개진다. */
+.content table {
+  font-size: 0.93rem;
+}
+
+.content table td,
+.content table th {
+  padding: 0.62rem 0.85rem;
+  word-break: keep-all;
+  vertical-align: top;
+}
+
+.content table th {
+  font-weight: 600;
+}
+
+/* prompt-tip/info/warning/danger 는 아이콘 자리(padding-left: 3rem)가 필요하다.
+   일반 인용문에만 적용한다. */
+.content blockquote:not([class^="prompt-"]) {
+  border-left: 3px solid var(--link-underline-color);
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  color: var(--text-muted-color);
+  word-break: keep-all;
+}
+
+.content blockquote[class^="prompt-"] {
+  word-break: keep-all;
+}
+
+.content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* 링크 — 본문에서 눈에 띄되 과하지 않게 */
+.content a {
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   8. 상단 여백 — 브레드크럼·검색창이 화면 끝에 붙어 있었다
+   ═══════════════════════════════════════════════════════ */
+#topbar-wrapper {
+  height: 4.5rem;
+}
+
+#main-wrapper {
+  padding-top: 1.2rem;
+}
+
+@media (min-width: 850px) {
+  #topbar-wrapper {
+    height: 5rem;
+  }
+}
+
+/* 브레드크럼 자체도 살짝 내린다 */
+#breadcrumb {
+  font-size: 0.9rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   9. 사이드바 — 아바타가 비어 있으면 숨기고, 활성 표시를 절제한다
+   ═══════════════════════════════════════════════════════ */
+#avatar:not(:has(img)) {
+  display: none;
+}
+
+#sidebar #profile-wrapper {
+  padding-top: 2.5rem;
+}
+
+/* 활성 메뉴 — 색으로 튀게 하지 않는다.
+   무채색 대비와 굵기만으로 구분한다. */
+#sidebar li.nav-item.active .nav-link {
+  font-weight: 600;
+}
+
+#sidebar li.nav-item.active .nav-link span,
+#sidebar li.nav-item.active .nav-link i {
+  color: var(--sidebar-active-color);
+}
+
+/* ═══════════════════════════════════════════════════════
+   10. 글 목록 — 카드가 배경에 묻히지 않게
+   ═══════════════════════════════════════════════════════ */
+#post-list .post-meta {
+  font-size: 0.85rem;
+  margin-top: 0.7rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   11. 우측 패널 — 본문과 위계를 벌린다
+   ═══════════════════════════════════════════════════════ */
+#access-lastmod h2,
+#panel-wrapper .panel-heading {
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+  color: var(--text-muted-color);
+}
+
+#access-lastmod li {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════════════
+   12. 푸터 — 톤 낮추기
+   ═══════════════════════════════════════════════════════ */
+footer {
+  font-size: 0.82rem;
+  color: var(--text-muted-color);
+}
+
+/* ═══════════════════════════════════════════════════════
+   13. 아카이브 — 원본이 회색 그라디언트를 하드코딩해서
+   커스텀 배경색과 어긋난다. 단순한 구분선으로 바꾼다.
+   ═══════════════════════════════════════════════════════ */
+#archives li:nth-child(odd) {
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+#archives li {
+  border-bottom: 1px solid var(--main-border-color);
+  transition: background-color 0.15s ease;
+}
+
+#archives li:hover {
+  background-color: rgba(127, 140, 152, 0.06);
+}
+
+#archives a,
+#archives a:hover {
+  color: var(--link-color);
+}
+
+#archives .date {
+  color: var(--text-muted-color);
+  font-variant-numeric: tabular-nums;
+}
+
+#archives .lead {
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+/* 연도 옆 점은 위치가 연도 텍스트 폭에 딸려간다(테마가 left: 21.5px 로 하드코딩).
+   폰트가 바뀌면 점이 타임라인 선에서 밀리므로 절대 위치로 고정한다.
+   box-sizing: border-box 라 width:12px 안에 테두리 3px 이 포함된다 = 지름 12px.
+   75px = 선 중심 81px - 6px */
+#archives .year::after {
+  position: absolute;
+  left: 75px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+/* 타임라인 점·선 톤 맞추기 */
+#archives .timeline::before,
+#archives li:not(:first-child)::before {
+  background-color: var(--main-border-color);
+}
+
+/* ═══════════════════════════════════════════════════════
+   14. 카테고리 · 태그 · 검색 결과도 같은 톤으로
+   ═══════════════════════════════════════════════════════ */
+.category-trigger:hover {
+  background-color: rgba(127, 140, 152, 0.08);
+}
+
+#search-results a {
+  color: var(--link-color);
+}
+
+.post-tag {
+  border-color: var(--card-border-color);
+}
+
+.post-tag:hover {
+  background-color: var(--link-color);
+  border-color: var(--link-color);
+  color: var(--body-bg);
+}
+
+/* 글 부제 — 테마가 Bootstrap 의 .fw-light(300 !important)를 박아둬서
+   한글이 유난히 얇게 나온다. 400 으로 되돌린다. */
+.post-desc.fw-light {
+  font-weight: 400 !important;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted-color);
+}
