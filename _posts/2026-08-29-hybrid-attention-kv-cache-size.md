@@ -1,5 +1,5 @@
 ---
-title: hybrid attention 의 KV 캐시 계산
+title: Hybrid attention 의 KV 캐시 계산
 description: 토큰당 40KiB가 어디서 나오는지 Q·K·V 와 GQA 로 계산했다. 그런데 이 모델은 레이어 40개 중 10개만 full attention 이라 맞을 리 없는 계산이었다. vLLM이 나머지 30개에도 같은 크기 자리를 잡는다는 걸 로그와 산술로 확인했다.
 date: 2026-08-29 11:00:00 +0900
 categories: [Infrastructure, Inference]
