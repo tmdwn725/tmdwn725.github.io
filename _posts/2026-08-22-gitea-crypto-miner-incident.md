@@ -50,10 +50,12 @@ df -h /
 
 재시작하기 직전에 리소스를 봤다.
 
+{% raw %}
 ```bash
 docker stats gitea --no-stream --format "cpu={{.CPUPerc}} mem={{.MemUsage}}"
 # cpu=357.73% mem=2.562GiB / 7.755GiB
 ```
+{% endraw %}
 
 4코어 서버에서 3.5코어를 태우고 있었다.
 
