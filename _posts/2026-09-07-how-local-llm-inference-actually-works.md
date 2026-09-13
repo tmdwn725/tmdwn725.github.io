@@ -3,7 +3,7 @@ title: LLM 추론이 메모리와 속도를 쓰는 방식
 description: 자료형, MoE, KV 캐시, prefill 과 decode, 배칭까지 밑에서부터 짚었다. 128GB 기계가 76GiB만 쓰는 이유와 dense 모델을 버린 이유가 여기서 나온다.
 date: 2026-09-07 20:00:00 +0900
 categories: [Infrastructure, Inference]
-tags: [vllm, kv-cache, quantization, moe]
+tags: [quantization, bandwidth, prefill-decode, batching]
 ---
 
 내 서버는 이 옵션으로 돌고 있다.
