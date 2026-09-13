@@ -100,10 +100,10 @@ openclaw 도 궤적을 남기지만 운영 분석용이다. **"에이전트가 �
 | | openclaw | hermes-agent |
 |---|---|---|
 | 샌드박스 | Docker / SSH. 기본 보수적 (network none, capDrop ALL, readOnly root) | **7개 백엔드** Local / Docker / SSH / Singularity / Modal / Daytona / Vercel Sandbox |
-| 서브에이전트 | **푸시 기반.** 자식 완료 이벤트가 부모에 push, 부모는 폴링 안 함 | **동기 블로킹.** 자식이 끝날 때까지 스레드풀에서 대기 |
+| 서브에이전트 | **푸시 기반.** 자식 완료 이벤트가 부모에 push, 부모는 polling 안 함 | **동기 블로킹.** 자식이 끝날 때까지 스레드풀에서 대기 |
 | 다중 코디네이션 | Task / TaskFlow 레지스트리 (별도 영속) | **칸반 DB 공유 상태.** 워커가 별도 프로세스로 뜨고 카드 ID를 환경변수로 받음 |
 
-hermes의 7개 백엔드 중 Modal과 Daytona는 서버리스다. **작업을 클라우드에 띄웠다가 내릴 수 있다.** 로컬 GPU가 없어도 무거운 작업을 돌린다는 뜻이다.
+hermes의 7개 백엔드 중 Modal과 Daytona는 serverless다. **작업을 클라우드에 띄웠다가 내릴 수 있다.** 로컬 GPU가 없어도 무거운 작업을 돌린다는 뜻이다.
 
 ## 컨텍스트 압축에서 본 디테일
 
